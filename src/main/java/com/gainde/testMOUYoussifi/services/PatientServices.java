@@ -3,9 +3,14 @@ package com.gainde.testMOUYoussifi.services;
 import com.gainde.testMOUYoussifi.dto.PatientDto;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 public interface PatientServices {
-//    PatientDto savePatient(PatientDto patientDto);
-//    PatientDto updatePatient(Long id, PatientDto patientDto);
-//    PatientDto getNom(String nom, PatientDto patientDto);
-//    boolean deletePatient(Long id);
+    PatientDto save(PatientDto patientDto);
+    PatientDto update(PatientDto patientDto);
+    PatientDto get(Long id);
+    PatientDto getByNom(String firstName);
+    boolean delete(Long id);
+    List<PatientDto> getAll();
+
 }
