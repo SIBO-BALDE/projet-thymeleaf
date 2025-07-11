@@ -26,6 +26,6 @@ public class PatientEntity {
     private boolean malade;
 
     @Column
-    private Integer score;
+    private int score;
 
 }
