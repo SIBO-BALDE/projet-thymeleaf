@@ -6,6 +6,7 @@ import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -35,6 +36,7 @@ public class PatientController {
         model.addAttribute("keyword",keyword);
         return "patient";
     }
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/delete")
     public String delete(Long id, String keyword, int page){
         patientRepository.deleteById(id);
