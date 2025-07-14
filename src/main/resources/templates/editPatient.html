@@ -16,8 +16,12 @@ layout:decorate="template1">
 <div layout:fragment="content1" class="card col-md-6 offset-md-3 mt-4 pt-4 pb-4" style=" border-top-right-radius: 25px;
     border-bottom-left-radius: 25px; border-right:10px solid #0d6efd; border-left:10px solid #0d6efd;">
     <div class="col-md-6 offset-md-3">
-        <form method="post" th:action="@{save}">
-            <h4>ADD PATIENT</h4>
+        <form method="post" th:action="@{save(page=${page}, keyword=${keyword})}">
+            <h4>EDIT PATIENT</h4>
+            <div class="mt-2">
+                <label for="id">ID</label>
+                <input class="form-control" type="text" name="id" th:value="${patient.id}" id="id" disabled>
+            </div>
             <div class="mt-2">
                 <label for="nom">Nom</label>
                 <input class="form-control" type="text" name="nom" th:value="${patient.nom}" id="nom">
@@ -39,7 +43,7 @@ layout:decorate="template1">
 <!--                <input class="form-control" type="number" name="score" th:value="${patient.score}" id="score">-->
                 <span class="text-danger" th:errors="${patient.score}"></span>
             </div>
-            <button type="submit" class="btn btn-primary mt-4">Save</button>
+            <button type="submit" class="btn btn-primary mt-4">Modifier</button>
         </form>
         </div>
 

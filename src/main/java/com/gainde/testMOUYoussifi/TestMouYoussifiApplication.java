@@ -19,11 +19,29 @@ import java.util.Date;
 		@Bean
 		CommandLineRunner commandLineRunner(PatientRepository patientRepository){
 			return  args -> {
-				patientRepository.save(new PatientEntity(null ,"Hassane", new Date(),false,12));
-				patientRepository.save(new PatientEntity(null ,"Hawa", new Date(),false,13));
-				patientRepository.save(new PatientEntity(null ,"Bilal", new Date(),false,5));
-				patientRepository.save(new PatientEntity(null ,"Zeynab", new Date(),false,22));
-				patientRepository.save(new PatientEntity(null ,"Haby", new Date(),false,8));
+				patientRepository.save(new PatientEntity(null ,"Hassane", new Date(),false,60));
+				patientRepository.save(new PatientEntity(null ,"Hawa", new Date(),false,70));
+				patientRepository.save(new PatientEntity(null ,"Bilal", new Date(),false,80));
+				patientRepository.save(new PatientEntity(null ,"Zeynab", new Date(),false,90));
+				patientRepository.save(new PatientEntity(null ,"Haby", new Date(),false,80));patientRepository.save(new PatientEntity(null ,"Hassane", new Date(),false,60));
+				patientRepository.save(new PatientEntity(null ,"Yacine", new Date(),false,70));
+				patientRepository.save(new PatientEntity(null ,"Ousmane", new Date(),false,80));
+				patientRepository.save(new PatientEntity(null ,"Dieynaba", new Date(),false,90));
+				patientRepository.save(new PatientEntity(null ,"Ibrahim", new Date(),false,80));patientRepository.save(new PatientEntity(null ,"Hassane", new Date(),false,60));
+				patientRepository.save(new PatientEntity(null ,"Alym", new Date(),false,70));
+				patientRepository.save(new PatientEntity(null ,"Dior", new Date(),false,80));
+				patientRepository.save(new PatientEntity(null ,"Aicha", new Date(),false,90));
+				patientRepository.save(new PatientEntity(null ,"Aliou", new Date(),false,80));patientRepository.save(new PatientEntity(null ,"Hassane", new Date(),false,60));
+				patientRepository.save(new PatientEntity(null ,"Zackaria", new Date(),false,70));
+				patientRepository.save(new PatientEntity(null ,"Zeynoul", new Date(),false,80));
+				patientRepository.save(new PatientEntity(null ,"Abib", new Date(),false,90));
+				patientRepository.save(new PatientEntity(null ,"Aziz", new Date(),false,80));
+				patientRepository.save(new PatientEntity(null ,"Aicha", new Date(),false,90));
+				patientRepository.save(new PatientEntity(null ,"Aliou", new Date(),false,80));patientRepository.save(new PatientEntity(null ,"Hassane", new Date(),false,60));
+				patientRepository.save(new PatientEntity(null ,"Mansour", new Date(),false,70));
+				patientRepository.save(new PatientEntity(null ,"Alima", new Date(),false,80));
+				patientRepository.save(new PatientEntity(null ,"Khadija", new Date(),false,90));
+				patientRepository.save(new PatientEntity(null ,"Malick", new Date(),false,80));
 
 				patientRepository.findAll().forEach(patientEntity -> {
 					System.out.println(patientEntity.getNom());
