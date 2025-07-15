@@ -36,22 +36,23 @@ public class PatientController {
         model.addAttribute("keyword",keyword);
         return "patient";
     }
-    @PreAuthorize("hasRole('ADMIN')")
+
     @GetMapping("/delete")
     public String delete(Long id, String keyword, int page){
         patientRepository.deleteById(id);
         return "redirect:/index?page="+page+"&keyword="+keyword;
     }
-
     @GetMapping("/")
     public String home(){
         return "redirect:/index";
     }
+
     @GetMapping("/formPatients")
     public String formPatients(Model model){
         model.addAttribute("patient", new PatientEntity());
         return "formPatients";
     }
+
 
     @PostMapping("/save")
     public String save(Model model,
@@ -72,6 +73,7 @@ public class PatientController {
         return "redirect:/index?page="+page+"&keyword="+keyword;
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/editPatient")
     public String editPatient(Model model, Long id, String keyword, int page){
         PatientEntity patient =patientRepository.findById(id).orElse(null);
@@ -81,7 +83,4 @@ public class PatientController {
         model.addAttribute("keyword", keyword);
         return "editPatient";
     }
-
-
-
 }

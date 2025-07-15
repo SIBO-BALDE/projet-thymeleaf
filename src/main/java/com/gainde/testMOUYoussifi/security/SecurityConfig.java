@@ -13,11 +13,13 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class SecurityConfig {
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/login", "/css/**", "/js/**", "/images/**").permitAll()
+                        .requestMatchers("/delete/**", "/save/**", "/edit/**", "/formPatients/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
@@ -28,30 +30,33 @@ public class SecurityConfig {
                 .logout(logout -> logout
                         .logoutSuccessUrl("/login?logout")
                         .permitAll()
+                )
+                .exceptionHandling(exception -> exception
+                        .accessDeniedHandler((request, response, accessDeniedException) -> {
+                            response.sendRedirect("/403"); // 🔒 Redirige vers une page /403 si accès refusé
+                        })
                 );
 
         return http.build();
     }
 
-    // Utilisateur(s) en mémoire avec mot de passe haché en bcrypt
     @Bean
     public UserDetailsService userDetailsService(PasswordEncoder encoder) {
         UserDetails admin = User.builder()
                 .username("admin")
                 .password(encoder.encode("1234"))
-                .roles("ADMIN") // rôle admin
+                .roles("ADMIN")
                 .build();
 
         UserDetails user = User.builder()
                 .username("user")
                 .password(encoder.encode("1234"))
-                .roles("USER") // rôle utilisateur simple
+                .roles("USER")
                 .build();
 
         return new InMemoryUserDetailsManager(admin, user);
     }
 
-    // Algorithme de hachage bcrypt
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
