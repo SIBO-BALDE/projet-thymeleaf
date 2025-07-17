@@ -44,7 +44,12 @@ public class PatientController {
     }
     @GetMapping("/")
     public String home(){
-        return "redirect:/index";
+        return "home";
+    }
+
+    @GetMapping("/about")
+    public String about(){
+        return "about";
     }
 
     @GetMapping("/formPatients")
